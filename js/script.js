@@ -1,11 +1,12 @@
 // Original Author: Alisson Lauffer <alissonvitortc@gmail.com>
 // This code is licensed under the MIT license.
 
-let serverIP = "arm.eduu.ga";
+let serverIP = "mc.amn.team";
 
 let infoElem = document.getElementById("server__info");
 let ipElem = document.getElementById("server__ip");
 let motdElem = document.getElementById("server__motd");
+let motdSubElem = document.getElementById("server__submotd");
 let statusElem = document.getElementById("server__status");
 let versionElem = document.getElementById("server__version");
 
@@ -23,7 +24,8 @@ let updateDetails = (result) => {
         ipElem.innerText = serverIP;
 
         versionElem.innerText = result.version;
-        motdElem.innerText = result.motd.clean
+        motdElem.innerText = result.motd.clean[0];
+        motdSubElem.innerText = result.motd.clean[1];
     }
     else {
         statusElem.innerText = "Server Offline";
@@ -43,7 +45,7 @@ let updateDetails = (result) => {
 ipElem.addEventListener("click", () => {
     navigator.clipboard.writeText(serverIP);
 
-    ipElem.innerText = "Copied!";
+    ipElem.innerText = "\uD83D\uDCCB Copied!";
     setTimeout(() => {
         ipElem.innerText = serverIP;
     }, 1000);
